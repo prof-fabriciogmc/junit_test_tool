@@ -10,15 +10,18 @@ import model.Calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CalculatorTest {    
-    private Calculator calc;    
+    private Calculator calc;  
+    
     public CalculatorTest(){
-        calc = new Calculator();
+        int id = (int) (Math.random()*100);
+        calc = new Calculator(id);
     }
     
     
@@ -27,14 +30,14 @@ public class CalculatorTest {
     ** in an array literal. Array value types include
     ** shorts, bytes, ints, longs, strings, doubles, floats,
     ** chars, etc..
-    */
-
-    
+    */ 
+    @Disabled
     @ParameterizedTest 
     @ValueSource(ints={1,2,3,4,5,9})
     public void squareTest(int par01) {
             int result ;
             result = calc.square(par01);
+            System.out.println(calc.getObjectId());
             assertEquals(par01*par01, result);            
     }
     
@@ -44,11 +47,12 @@ public class CalculatorTest {
     ** order they appear in the string value array to the 
     ** the corresponding method parameters.
     */
-    
+    @Disabled
     @ParameterizedTest
     @CsvSource(value={"1:2:3","4:5:9", "11:12:23"},
                delimiter=':')
     public void sumTest(int x, int y, int result){
+        System.out.println(calc.getObjectId());
         assertEquals(result, calc.sum(x, y));
     }
     
@@ -62,6 +66,8 @@ public class CalculatorTest {
     @CsvFileSource(resources="/valores_teste.csv", 
                    delimiter=',')
     public void sumTestCSV(int x, int y, int result){
+        
+        System.out.println(calc.getObjectId());
         assertEquals(result, calc.sum(x, y));
     }
     

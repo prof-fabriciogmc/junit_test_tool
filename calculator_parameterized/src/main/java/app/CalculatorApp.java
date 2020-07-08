@@ -14,7 +14,7 @@ import model.Calculator;
 public class CalculatorApp {
     
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
+        Calculator calc = new Calculator(1);
         System.out.println("Soma (1+1): "+ calc.sum(1, 1));
         System.out.println("Subtração (2-3): " + calc.subtract(2, 3));
         System.out.println("Quadrado (4): " + calc.square(4));

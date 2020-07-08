@@ -1,0 +1,28 @@
+/* Author: Fabrício Galende M. de Carvalho */
+plugins{
+    id 'java'
+    id 'application'
+}
+
+/* Main program class declaration.
+ * It is needed only if the user wants to execute
+ * the application from the command line and/or build
+ * an executable file. 
+ **/
+mainClassName = 'app.Application'
+
+repositories{
+    mavenCentral()
+}
+dependencies{
+    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1' 
+}
+
+/* Habilitação da utilização do JUnit através
+** de tarefas de teste 
+*/
+test{
+    useJUnitPlatform()
+}
+
